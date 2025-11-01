@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - TechStore</title>
+  <!-- GTM-CONTAINER -->
+  <style>
+    body { font-family: Arial; margin: 40px; background: #f7f7f7; }
+    form { background: white; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    input, textarea { width: 100%; margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">Contáctanos</h1>
+
+  <form id="contactForm" onsubmit="enviarFormulario(event)">
+    <label>Nombre:</label>
+    <input type="text" id="nombre" required>
+
+    <label>Correo:</label>
+    <input type="email" id="correo" required>
+
+    <label>Mensaje:</label>
+    <textarea id="mensaje" rows="4" required></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    function enviarFormulario(e) {
+      e.preventDefault(); // Evita recargar la página
+      
+      const nombre = document.getElementById('nombre').value;
+      const correo = document.getElementById('correo').value;
+
+      // Empuja al dataLayer el evento de envío
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'form_submit',
+        form_name: 'contacto',
+        user_name: nombre,
+        user_email: correo
+      });
+
+      // Simula envío y redirige a la página de agradecimiento
+      alert('Formulario enviado correctamente');
+      window.location.href = 'thank-you.html';
+    }
+  </script>
+</body>
+</html>
