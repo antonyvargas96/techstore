@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechStore - Productos</title>
+  <!-- GTM-CONTAINER -->
+</head>
+<body>
+  <h1>Catálogo de productos</h1>
+  <ul id="lista-productos">
+    <li onclick="addToCart('Laptop Pro', 3500)">💻 Laptop Pro - S/ 3500</li>
+    <li onclick="addToCart('Mouse Inalámbrico', 80)">🖱️ Mouse Inalámbrico - S/ 80</li>
+    <li onclick="addToCart('Monitor 24\"', 600)">🖥️ Monitor 24" - S/ 600</li>
+  </ul>
+
+  <a href="carrito.html">Ir al carrito</a>
+
+  <script>
+    // Simular evento de añadir al carrito
+    function addToCart(nombre, precio) {
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'add_to_cart',
+        item_name: nombre,
+        price: precio
+      });
+      alert(nombre + ' añadido al carrito');
+    }
+  </script>
+</body>
+</html>
